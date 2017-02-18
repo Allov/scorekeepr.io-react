@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as CounterActions from '../actions/CounterActions';
+import * as PlayerActions from '../actions/PlayerActions';
+import Player from '../components/Player';
 import Counter from '../components/Counter';
 import Footer from '../components/Footer';
 
@@ -13,11 +15,12 @@ import Footer from '../components/Footer';
 class App extends Component {
   render() {
     // we can use ES6's object destructuring to effectively 'unpack' our props
-    const { counter, actions } = this.props;
+    const { player, counter, actions } = this.props;
     return (
       <div className="main-app-container">
-        <div className="main-app-nav">Simple Redux Boilerplate</div>
+        <div className="main-app-nav">Scorekeepr</div>
         {/* notice that we then pass those unpacked props into the Counter component */}
+        <Player name={player} actions={actions} />
         <Counter counter={counter} actions={actions} />
         <Footer />
       </div>
@@ -26,6 +29,7 @@ class App extends Component {
 }
 
 App.propTypes = {
+  player: PropTypes.string.isRequired,
   counter: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired
 };
@@ -37,6 +41,7 @@ App.propTypes = {
  */
 function mapStateToProps(state) {
   return {
+    player: state.player,
     counter: state.counter
   };
 }
@@ -50,8 +55,10 @@ function mapStateToProps(state) {
  * More info: http://redux.js.org/docs/api/bindActionCreators.html
  */
 function mapDispatchToProps(dispatch) {
+  const actions = Object.assign(CounterActions, PlayerActions);
+
   return {
-    actions: bindActionCreators(CounterActions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   };
 }
 

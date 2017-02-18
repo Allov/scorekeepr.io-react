@@ -3,6 +3,9 @@ import React, { Component, PropTypes } from 'react';
 export default class Counter extends Component {
   constructor(props, context) {
     super(props, context);
+
+    this.handleIncrement = this.handleIncrement.bind(this);
+    this.handleDecrement = this.handleDecrement.bind(this);
   }
 
   handleIncrement() {
@@ -13,19 +16,22 @@ export default class Counter extends Component {
     this.props.actions.decrement();
   }
 
+  handlePositiveNegativeValue() {
+    if (this.props.counter !== 0) {
+      return this.props.counter > 0 ? 'counter-positive' : 'counter-negative';
+    }
+
+    return '';
+  }
+
   render() {
     return (
       <div className="counter-container">
-        <div className="counter-num-label">{this.props.counter}</div>
-        {/* Below, the even or odd statement is simply used to demonstrate how one could
-        easily use a ternary operator to conditionally show an 'even' or 'odd' string
-        based on the counter's value on state. */}
-        <div className="counter-even-label">{this.props.counter % 2 === 0 ? 'even' : 'odd'}</div>
-        <br />
         <div className="counter-buttons">
-          <button onClick={() => {this.handleDecrement();}}>-</button>
-          <button onClick={() => {this.handleIncrement();}}>+</button>
+          <button onClick={this.handleIncrement}>+</button>
+          <button onClick={this.handleDecrement}>-</button>
         </div>
+        <div className={`counter-num-label ${this.handlePositiveNegativeValue()}`}>{this.props.counter}</div>
       </div>
     );
   }

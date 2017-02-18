@@ -26,10 +26,8 @@ body {
 
 .counter-num-label {
   color: $accent-orange;
-  padding-top: 1em;
   font-size: 3em;
   text-align: center;
-  width: 100%;
 }
 
 .counter-even-label {
@@ -44,7 +42,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 3em;
+  padding-top: 1em;
+  float: left;
 
   button {
     background-color: #CCC;
@@ -58,6 +57,14 @@ body {
       background-color: $accent-gray;
     }
   }
+}
+
+.counter-negative {
+  color: #ec2d2d;
+}
+
+.counter-positive {
+  color: #37dc7a;
 }
 
 footer {
