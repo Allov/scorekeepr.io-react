@@ -9,11 +9,11 @@ export default class Counter extends Component {
   }
 
   handleIncrement() {
-    this.props.actions.increment();
+    this.props.actions.incrementAction();
   }
 
   handleDecrement() {
-    this.props.actions.decrement();
+    this.props.actions.decrementAction();
   }
 
   handlePositiveNegativeValue() {
@@ -31,7 +31,9 @@ export default class Counter extends Component {
           <button onClick={this.handleIncrement}>+</button>
           <button onClick={this.handleDecrement}>-</button>
         </div>
-        <div className={`counter-num-label ${this.handlePositiveNegativeValue()}`}>{this.props.counter}</div>
+        <div className={`counter-num-label ${this.handlePositiveNegativeValue()}`}>
+          {this.props.counter}
+        </div>
       </div>
     );
   }

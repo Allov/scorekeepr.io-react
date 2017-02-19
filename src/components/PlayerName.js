@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class Player extends Component {
+export default class PlayerName extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -9,7 +9,7 @@ export default class Player extends Component {
   }
 
   handleNameChange(e) {
-    this.props.actions.changePlayerName(e.target.value);
+    this.props.actions.changePlayerNameAction(e.target.value);
   }
 
   handleFocus(e) {
@@ -27,7 +27,7 @@ export default class Player extends Component {
   }
 }
 
-Player.propTypes = {
+PlayerName.propTypes = {
   name: PropTypes.string.isRequired,
   actions: PropTypes.object.isRequired
 };
