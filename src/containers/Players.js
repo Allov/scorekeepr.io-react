@@ -36,7 +36,9 @@ class Players extends Component {
             actions={counterDispatchProperties(index)(dispatch)}
           />
         )}
-        <button onClick={this.handleAddPlayer}>+</button>
+        <div className="counter-buttons">
+          <button className="add-player-button" onClick={this.handleAddPlayer}>+</button>
+        </div>
       </div>
     );
   }

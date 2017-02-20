@@ -11,7 +11,10 @@ export const removePlayerAction = () =>
     type: REMOVE_PLAYER
   });
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = [
+  Object.assign({}, PLAYER_INITIAL_STATE, { name: `Player 1` }),
+  Object.assign({}, PLAYER_INITIAL_STATE, { name: `Player 2` })
+];
 
 const reducer = (state = INITIAL_STATE, action) => {
 

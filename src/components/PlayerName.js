@@ -18,7 +18,7 @@ export default class PlayerName extends Component {
 
   render() {
     return (
-      <input type="text"
+      <input className="player-name" type="text"
         value={this.props.name}
         onChange={this.handleNameChange}
         onFocus={this.handleFocus}
